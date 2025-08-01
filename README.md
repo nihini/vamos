@@ -7,7 +7,10 @@
 No guarantees that any of this is working or production ready. For that, these things will first move into a production-ready project, maybe private, maybe public. 
 
 Should you contribute? Yes, send lots of money - ask for wallet address ;-) 
-Well, if not money, time, effort and knowledge? Well that is what open source is all about. Should you comment - why not - it might just show your real character. 
+
+Well, if not money, then time, effort and knowledge. That is what open source is all about. 
+
+Should you comment?  Why not... It might just show your real character, or we can all learn something together. 
 
 Use it... Don't use it...  
 
