@@ -1,0 +1,9 @@
+# cli-cobra-viper.yaml (example)
+verbose: true
+myapp:
+  str: "Hello, World from config file"
+  num: 333
+  message: "This is a test message from config file"
+  sub2:
+    str: "Sub2 String from config file"
+    num: 444
