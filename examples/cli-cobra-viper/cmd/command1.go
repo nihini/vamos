@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/nihini/cli-cobra-viper/internal/config"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -21,7 +22,7 @@ var command1_Sub1 = &cobra.Command{
 	Short: "Sub Command of Command 1 - display a message",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		message := viper.GetString("myapp.message")
+		message := config.Config.MyApp.Message
 		fmt.Printf("Sub Command 1 - Message from argument: %s - Message from config: %s\n", args[0], message)
 	},
 }

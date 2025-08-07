@@ -1,15 +1,16 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
 	"strings"
 
+	"github.com/nihini/cli-cobra-viper/internal/config"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 var cfgFile string
+
+// ...AppConfig and Config are now in internal/config.go...
 
 // rootCmd is the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -24,7 +25,7 @@ func Execute() {
 }
 
 func init() {
-	cobra.OnInitialize(initConfig)
+	cobra.OnInitialize(func() { config.InitConfig(cfgFile) })
 
 	// Global persistent flags
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.cli-cobra-viper.yaml)")
@@ -37,22 +38,4 @@ func init() {
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 }
 
-// initConfig reads in config file and ENV variables if set
-func initConfig() {
-	if cfgFile != "" {
-		viper.SetConfigFile(cfgFile)
-	} else {
-		home, err := os.UserHomeDir()
-		cobra.CheckErr(err)
-
-		viper.AddConfigPath(home)
-		viper.AddConfigPath(".")
-		viper.SetConfigName("cli-cobra-viper")
-	}
-
-	viper.SetConfigType("yaml")
-
-	if err := viper.ReadInConfig(); err == nil {
-		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
-	}
-}
+// ...initConfig now lives in internal/config.go...
